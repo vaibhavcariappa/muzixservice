@@ -1,10 +1,16 @@
 package com.stackroute.muzixservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
+@Getter
+@Setter
+@ToString
 @Document(value="Tracks")
 public class Track {
 
@@ -35,7 +41,7 @@ public class Track {
         this.trackUrl = trackUrl;
         this.artist = artist;
     }
-
+/*
     public String getTrackId() {
         return trackId;
     }
@@ -96,4 +102,7 @@ public class Track {
                 ", artist=" + artist +
                 '}';
     }
+
+*/
+
 }

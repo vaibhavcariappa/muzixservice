@@ -2,9 +2,15 @@ package com.stackroute.muzixservice.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
-
+@Getter
+@Setter
+@ToString
 public class Image {
 
     @Id
@@ -23,7 +29,7 @@ public class Image {
         this.imageUrl = imageUrl;
         this.imageSpec = imageSpec;
     }
-
+/*
     public int getImageId() {
         return imageId;
     }
@@ -56,4 +62,6 @@ public class Image {
                 ", imageSpec='" + imageSpec + '\'' +
                 '}';
     }
+*/
+
 }
