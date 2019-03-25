@@ -1,0 +1,31 @@
+.mat-toolbar{
+    background-color: #9c1148;
+    height: 20vh;
+    display: flex;
+    padding-top: 3.2vh;
+    text-align: right;
+}
+
+.logo{
+    height: 20vh;
+    margin-right: auto;    
+}
+
+.logoImg{
+    height: 20vh;
+}
+
+.header-buttons{
+    font-family: 'Germania One', cursive;
+    font-size: 1.2em;
+}
+
+.mat-menu-item{
+    font-family: 'Germania One', cursive;
+    font-size: 1em;    
+}
+
+.wishlist-button{
+    font-family: 'Germania One', cursive;
+    font-size: 1.2em;   
+}

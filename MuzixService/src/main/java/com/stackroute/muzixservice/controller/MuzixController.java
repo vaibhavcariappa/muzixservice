@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("api/v1/muzixservice")
 public class MuzixController {
 
@@ -59,8 +60,8 @@ public class MuzixController {
     public ResponseEntity<?> updateCommentForTrack(@RequestBody Track track, @PathVariable("id") String id ) throws TrackNotFoundException {
 
         try{
-            muzixService.updateCommentForTrack(track.getComments(), id);
-            responseEntity = new ResponseEntity<>("Successfully updated the track!", HttpStatus.OK);
+            Track updatedTrack = muzixService.updateCommentForTrack(track.getComments(), id);
+            responseEntity = new ResponseEntity(track, HttpStatus.OK);
         }catch(TrackNotFoundException e) {
             throw new TrackNotFoundException();
         }catch(Exception e) {

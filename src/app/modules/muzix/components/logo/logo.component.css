@@ -1,0 +1,10 @@
+.logoOrigin{
+    display: block;
+    margin: auto;
+}
+
+.link{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
