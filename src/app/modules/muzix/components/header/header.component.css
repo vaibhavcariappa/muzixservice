@@ -2,8 +2,11 @@
     background-color: #9c1148;
     height: 20vh;
     display: flex;
-    padding-top: 3.2vh;
     text-align: right;
+}
+
+.mat-toolbar-row{
+    height: 20vh;
 }
 
 .logo{
