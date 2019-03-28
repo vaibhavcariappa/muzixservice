@@ -1,0 +1,26 @@
+version: '3'
+services:
+  Muzix_backend:
+    image: vaibhavcariappa/muzixservicebackend:v1
+    restart: always
+    network_mode: host
+    container_name: muzix-spring
+    depends_on:
+      - Muzix_db
+    ports:
+      - 8083:8083
+
+  Muzix_frontend:
+    image: vaibhavcariappa/muzixservicefrontend:v1
+    network_mode: host
+    container_name: muzix-angular
+    ports:
+      - 8080:8080
+
+  Muzix_db:
+    image: mongo:3.4-jessie
+    network_mode: host
+    container_name: muzix-mongo
+    ports:
+      - 27017:27017
+
