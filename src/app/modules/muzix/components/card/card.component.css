@@ -1,7 +1,7 @@
 .example-card{
     display: flex;
     flex-direction: column;
-    height: 55vh;
+    height: 45vh;
     width: 20vw;
     margin: 1em;
     text-align: center;
