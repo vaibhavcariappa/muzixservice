@@ -43,7 +43,8 @@
 	</dependencies>
 
 	<modules>
-		<module>MuzixService</module>
+		<module>usertrackservice</module>
+		<module>authenticationservice</module>
 	</modules>
 
 
