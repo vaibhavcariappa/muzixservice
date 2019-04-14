@@ -2,24 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardContainerComponent } from './components/card-container/card-container.component';
 import { CardComponent } from 'src/app/modules/muzix/components/card/card.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
 import { AppRoutingModule } from '../../app-routing.module';
 import { WishListComponent } from './components/wish-list/wish-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoComponent } from './components/logo/logo.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { AngularmaterialModule } from '../angularmaterial/angularmaterial.module';
+import { MuzixService } from 'src/app/modules/muzix/muzix.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from 'src/app/modules/muzix/interceptor.service';
+
+
 
 
 @NgModule({
@@ -32,36 +27,31 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     LogoComponent,
     DialogComponent
   ],
-  
+
   imports: [
     CommonModule,
-    MatCardModule, 
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatMenuModule,
     AppRoutingModule,
-    MatSnackBarModule,
-    MatDialogModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule
+    AngularmaterialModule
   ],
 
   exports: [
     CardContainerComponent,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
     HeaderComponent,
     AppRoutingModule,
     FooterComponent,
-    WishListComponent,
-    MatSnackBarModule
-  ],
+    WishListComponent
 
+  ],
+  providers: [
+    MuzixService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+
+  ],
   entryComponents: [
     DialogComponent
   ],

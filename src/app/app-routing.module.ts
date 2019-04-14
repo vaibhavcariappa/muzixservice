@@ -3,14 +3,28 @@ import { Routes, RouterModule } from '@angular/router';
 import { CardContainerComponent } from 'src/app/modules/muzix/components/card-container/card-container.component';
 import { WishListComponent } from 'src/app/modules/muzix/components/wish-list/wish-list.component';
 import { LogoComponent } from 'src/app/modules/muzix/components/logo/logo.component';
+import { RegisterComponent } from 'src/app/modules/authentication/components/register/register.component';
+import { LoginComponent } from 'src/app/modules/authentication/components/login/login.component';
+import { AuthGuardService } from 'src/app/modules/muzix/auth-guard.service';
 
 const routes: Routes = [
 
   {
     path:"",
-    component: CardContainerComponent,
-    data: {country: "india"}
+    component: LoginComponent,
   },
+  {
+    path:"Login",
+    component: LoginComponent,
+  },
+  {
+    path:"Logout",
+    component: LoginComponent,
+  },   
+  {
+    path:"Register",
+    component: RegisterComponent,
+  },  
   {
     path:"Australia",
     component: CardContainerComponent,
@@ -74,7 +88,8 @@ const routes: Routes = [
   
   {
     path:"WishList",
-    component: WishListComponent
+    component: WishListComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path:"Logo",

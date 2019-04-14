@@ -1,26 +1,48 @@
 version: '3'
 services:
-  Muzix_backend:
-    image: vaibhavcariappa/muzixservicebackend:v1
+  Muzix_AuthService:
+    image: vaibhavcariappa/authenticationservice:v1
     restart: always
     network_mode: host
-    container_name: muzix-spring
+    container_name: muzixauthservicecontainer
     depends_on:
-      - Muzix_db
+      - Muzix_mysqldb
     ports:
-      - 8083:8083
+      - 8084:8084
+
+  Muzix_UserTrackService:
+    image: vaibhavcariappa/usertrackservice:v1
+    restart: always
+    network_mode: host
+    container_name: muzixusertrackservicecontainer
+    depends_on:
+      - Muzix_mongodb
+    ports:
+      - 8085:8085
 
   Muzix_frontend:
-    image: vaibhavcariappa/muzixservicefrontend:v1
+    image: vaibhavcariappa/muzixservicefrontendauthentication:v1
     network_mode: host
     container_name: muzix-angular
     ports:
       - 8080:8080
 
-  Muzix_db:
+  Muzix_mongodb:
     image: mongo:3.4-jessie
     network_mode: host
-    container_name: muzix-mongo
+    container_name: muzix-mongocontainer
     ports:
       - 27017:27017
+
+  Muzix_mysqldb:
+    image: mysql:5.5
+    network_mode: host
+    container_name: muzix-mysqlcontainer
+    ports:
+      - 3306:3306
+    environment:
+        MYSQL_DATABASE: UserDb
+        MYSQL_USER: approot
+        MYSQL_PASSWORD: root123
+        MYSQL_ROOT_PASSWORD: root123
 

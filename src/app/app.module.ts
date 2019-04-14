@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MuzixModule } from 'src/app/modules/muzix/muzix.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationModule } from './modules/authentication/authentication.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MuzixModule
+    MuzixModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

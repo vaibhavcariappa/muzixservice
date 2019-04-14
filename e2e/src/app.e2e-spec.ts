@@ -22,12 +22,81 @@ describe('workspace-project App', () => {
     browser.driver.sleep(1000);
   }); 
 
+
+  it('should be able to click on Track Menu button to redirect to Login Page since not logged in', () => {
+    browser.element(by.css('.mat-button')).click();
+    browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Login');
+    browser.driver.sleep(1000);
+  });
+
+  it('should be able to click on WishList button to redirect to Login Page since not logged in', () => {
+    browser.driver.sleep(1000);
+    browser.element(by.css('.wishlist-button')).click();
+    expect(browser.getCurrentUrl()).toContain('/Login');
+    browser.driver.sleep(1000);
+  }); 
+
+
+  it('should be able to click on Logout button to redirect to Login Page since not logged in', () => {
+    browser.driver.sleep(1000);
+    browser.element(by.css('.logout-button')).click();
+    expect(browser.getCurrentUrl()).toContain('/Login');
+    browser.driver.sleep(1000);
+  }); 
+  
+  it('should be able to redirect to register page', () => {
+    browser.driver.sleep(1000);
+    browser.element(by.css('.registerUser')).click();
+    expect(browser.getCurrentUrl()).toContain('/Register');
+    browser.driver.sleep(1000);
+  }); 
+
+  it('should be able to register user', () => {
+    browser.driver.sleep(1000);
+    browser.element(by.id('username')).sendKeys('test');
+    browser.element(by.css('.register-user')).click();
+    browser.driver.sleep(1000);
+    browser.element(by.id('email')).sendKeys('test');
+    browser.element(by.css('.register-user')).click();
+    browser.driver.sleep(1000);
+    browser.element(by.id('password')).sendKeys('test123');
+    browser.driver.sleep(1000);
+    browser.element(by.css('.register-user')).click();
+    browser.driver.sleep(1000);
+    browser.element(by.id('email')).sendKeys('@test.com');
+    browser.driver.sleep(1000);
+    browser.element(by.id('eye')).click();
+    browser.driver.sleep(1000);
+    browser.element(by.id('eye')).click();
+    browser.driver.sleep(1000);
+    browser.element(by.css('.register-user')).click();
+    browser.driver.sleep(1000);
+  }); 
+  
+  
+  it('should be able to login user', () => {
+    browser.driver.sleep(1000);
+    browser.element(by.id('username')).sendKeys('test');
+    browser.element(by.css('.loginUser')).click();
+    browser.driver.sleep(1000);
+    browser.element(by.id('password')).sendKeys('test123');
+    browser.driver.sleep(1000);
+    browser.element(by.id('eye')).click();
+    browser.driver.sleep(1000);
+    browser.element(by.id('eye')).click();
+    browser.driver.sleep(1000);    
+    browser.element(by.css('.loginUser')).click();
+    browser.driver.sleep(1000);
+  });     
+  
+
   it('should be able to click on Menu item for Australia', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-australia')).click();
-    expect(browser.getCurrentUrl()).toContain('/Australia');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Australia');
   });
 
   it('should be able to save Australia track to WishList', () => {
@@ -42,8 +111,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-canada')).click();
-    expect(browser.getCurrentUrl()).toContain('/Canada');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Canada');
   });
 
   it('should be able to save Canada track to WishList', () => {
@@ -58,8 +127,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-china')).click();
-    expect(browser.getCurrentUrl()).toContain('/China');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/China');    
   });
 
   it('should be able to save China track to WishList', () => {
@@ -74,8 +143,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-germany')).click();
-    expect(browser.getCurrentUrl()).toContain('/Germany');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Germany');    
   });
 
   it('should be able to save Germany track to WishList', () => {
@@ -90,8 +159,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-india')).click();
-    expect(browser.getCurrentUrl()).toContain('/India');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/India');    
   });
 
   it('should be able to save India track to WishList', () => {
@@ -107,8 +176,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-ireland')).click();
-    expect(browser.getCurrentUrl()).toContain('/Ireland');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Ireland');    
   });
 
   it('should be able to save Ireland track to WishList', () => {
@@ -123,8 +192,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-italy')).click();
-    expect(browser.getCurrentUrl()).toContain('/Italy');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Italy');    
   });
 
   it('should be able to save Italy track to WishList', () => {
@@ -139,8 +208,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-japan')).click();
-    expect(browser.getCurrentUrl()).toContain('/Japan');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Japan');    
   });
 
   it('should be able to save Japan track to WishList', () => {
@@ -155,8 +224,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-spain')).click();
-    expect(browser.getCurrentUrl()).toContain('/Spain');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Spain');    
   });
 
   it('should be able to save Spain track to WishList', () => {
@@ -171,8 +240,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-sweden')).click();
-    expect(browser.getCurrentUrl()).toContain('/Sweden');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Sweden');    
   });
 
   it('should be able to save Sweden track to WishList', () => {
@@ -187,8 +256,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-ukraine')).click();
-    expect(browser.getCurrentUrl()).toContain('/Ukraine');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/Ukraine');    
   });
 
   it('should be able to save Ukraine track to WishList', () => {
@@ -203,8 +272,8 @@ describe('workspace-project App', () => {
     browser.element(by.css('.mat-button')).click();
     browser.driver.sleep(1000);
     browser.element(by.css('.mat-menu-item-unitedstates')).click();
-    expect(browser.getCurrentUrl()).toContain('/UnitedStates');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/UnitedStates');    
   });
 
   it('should be able to save United States track to WishList', () => {
@@ -218,8 +287,8 @@ describe('workspace-project App', () => {
   it('should be able to get all data from WishList', () => {
     browser.driver.sleep(1000);
     browser.element(by.css('.wishlist-button')).click();
-    expect(browser.getCurrentUrl()).toContain('/WishList');
     browser.driver.sleep(1000);
+    expect(browser.getCurrentUrl()).toContain('/WishList');    
   });  
 
   it('should be able to delete track from WishList', () => {
@@ -245,5 +314,12 @@ describe('workspace-project App', () => {
     browser.element(by.css('.updateCommentdemo')).click();
     browser.driver.sleep(1000);
   });    
+
+
+  it('should be able to logout from the application', () => {
+    browser.driver.sleep(500);
+    browser.element(by.css('.logout-button')).click();
+    browser.driver.sleep(1000);
+  }); 
 
 });

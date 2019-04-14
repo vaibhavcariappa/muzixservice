@@ -5,7 +5,7 @@
       <img class="logoImg" src="assets\image\logo.png">
     </a>
 
-    <button class="header-buttons" mat-button [matMenuTriggerFor]="menu">Track</button>
+    <button class="header-buttons" mat-button (click)="displayTrackMenuList()" [matMenuTriggerFor]="menu">Track</button>
     <mat-menu #menu="matMenu">
       <button class="mat-menu-item-australia" [routerLink]="['/Australia']" mat-menu-item>Australia</button>
       <button class="mat-menu-item-canada" [routerLink]="['/Canada']" mat-menu-item>Canada</button>
@@ -22,6 +22,8 @@
     </mat-menu>
 
     <button class="wishlist-button" [routerLink]="['/WishList']" mat-button>WishList</button>
+
+    <button class="logout-button" (click)="logout()" mat-button>Logout</button>
 
   </mat-toolbar-row>
 </mat-toolbar>

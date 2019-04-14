@@ -34,7 +34,7 @@ export class WishListComponent implements OnInit {
       console.log("Deleted:",data);
       const index = this.tracks.indexOf(track);
       this.tracks.splice(index, 1);
-      this.snackBar.open(data, "", {duration: 2000});
+      this.snackBar.open("Successfully Deleted!", "", {duration: 2000});
 
     });
     return this.tracks;
