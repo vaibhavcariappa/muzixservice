@@ -10,24 +10,29 @@ export class AuthenticationService {
 
   private SpringRegisterEndPoint: string;
   private SpringSaveEndPoint: string;
+  private SpringLoginEndPoint: string;
 
   constructor(private httpclient: HttpClient) { 
-    this.SpringRegisterEndPoint="http://localhost:8085/api/v1/usertrackservice/";
-    this.SpringSaveEndPoint="http://localhost:8084/api/v1/userservice/";
+//    this.SpringRegisterEndPoint="http://localhost:8085/api/v1/usertrackservice/";
+//    this.SpringSaveEndPoint="http://localhost:8084/api/v1/userservice/";
+
+      this.SpringRegisterEndPoint="http://localhost:8086/orchestrationservice/api/v1/user";
+      this.SpringLoginEndPoint="http://localhost:8086/authenticationservice/api/v1/userservice/login";
+
   }
 
   registerUser(newUser) {
-    const url = this.SpringRegisterEndPoint + "register";
+    const url = this.SpringRegisterEndPoint;
     return this.httpclient.post(url, newUser, {observe: "response"});
   }
 
-  saveUser(newUser) {
-    const url = this.SpringSaveEndPoint + "save";
-    return this.httpclient.post(url, newUser);
-  }
+  // saveUser(newUser) {
+  //   const url = this.SpringSaveEndPoint + "save";
+  //   return this.httpclient.post(url, newUser);
+  // }
 
   loginUser(newUser) {
-    const url = this.SpringSaveEndPoint + "login";
+    const url = this.SpringLoginEndPoint;
     sessionStorage.setItem(USER_NAME, newUser.username);
     return this.httpclient.post(url, newUser, {observe: "response"});
   }

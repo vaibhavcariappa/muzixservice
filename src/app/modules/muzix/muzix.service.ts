@@ -19,7 +19,8 @@ export class MuzixService {
     this.thirdPartyApi = "http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=";
     this.apiKey = "&api_key=98903418fc1d6aa48061226cc49aee58&format=json";
     //this.springEndPoint = "http://localhost:8083/api/v1/muzixservice/";
-    this.springEndPoint = "http://localhost:8085/api/v1/usertrackservice/";
+    //this.springEndPoint = "http://localhost:8085/api/v1/usertrackservice/";
+    this.springEndPoint = "http://localhost:8086/usertrackservice/api/v1/usertrackservice/";
   }
 
   getTrackDetails(country: string): Observable<any> {
@@ -46,14 +47,15 @@ export class MuzixService {
   deleteTrackFromWishList(track: Track) {
     this.username = sessionStorage.getItem(USER_NAME);
     //const url = this.springEndPoint + "track/" + `${track.trackId}`;
-    const url = this.springEndPoint + "user/" + this.username + "/track";
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-      body: track
-    };
-    return this.httpClient.delete(url, options);
+    const url = this.springEndPoint + "user/" + this.username + "/" + track.trackId;
+    // const options = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //   }),
+    //   body: track
+    // };
+    // return this.httpClient.delete(url, options);
+    return this.httpClient.delete(url);
   }  
 
   updateComments(track) {

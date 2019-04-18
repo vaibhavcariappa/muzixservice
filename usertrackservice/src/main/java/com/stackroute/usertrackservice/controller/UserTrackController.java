@@ -45,7 +45,7 @@ public class UserTrackController {
 
 
     @PostMapping("/user/{username}/track")
-    public ResponseEntity<?> saveUserTrackToWishList(@PathVariable String username, @RequestBody Track track) throws TrackAlreadyExistsException {
+    public ResponseEntity<?> saveUserTrackToWishList(@PathVariable ("username") String username, @RequestBody Track track) throws TrackAlreadyExistsException {
 
         try{
             User user = userTrackService.saveUserTrackToWishList(username, track);
@@ -60,11 +60,11 @@ public class UserTrackController {
     }
 
 
-    @DeleteMapping("/user/{username}/track")
-    public ResponseEntity<?> deleteUserTrackToWishList(@PathVariable String username, @RequestBody Track track) throws TrackNotFoundException {
+    @DeleteMapping("/user/{username}/{trackId}")
+    public ResponseEntity<?> deleteUserTrackToWishList(@PathVariable ("username") String username, @PathVariable ("trackId") String trackId) throws TrackNotFoundException {
 
         try{
-            User user = userTrackService.deleteUserTrackFromWishList(username, track.getTrackId());
+            User user = userTrackService.deleteUserTrackFromWishList(username, trackId);
             responseEntity = new ResponseEntity<>(user, HttpStatus.OK);
         } catch (TrackNotFoundException e) {
             throw new TrackNotFoundException();
@@ -77,7 +77,7 @@ public class UserTrackController {
 
 
     @PatchMapping("/user/{username}/track")
-    public ResponseEntity<?> updateCommentForUserTrack(@PathVariable String username, @RequestBody Track track) throws TrackNotFoundException {
+    public ResponseEntity<?> updateCommentForUserTrack(@PathVariable ("username") String username, @RequestBody Track track) throws TrackNotFoundException {
 
         try{
             userTrackService.updateCommentForTrack(username, track.getTrackId(), track.getComments());
@@ -92,7 +92,7 @@ public class UserTrackController {
     }
 
     @GetMapping("/user/{username}/tracks")
-    public ResponseEntity<?> getAllUserTracksFromWishList(@PathVariable String username) {
+    public ResponseEntity<?> getAllUserTracksFromWishList(@PathVariable ("username") String username) {
 
         try{
             responseEntity = new ResponseEntity<>(userTrackService.getAllUserTracksFromWishList(username), HttpStatus.OK);

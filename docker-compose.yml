@@ -1,43 +1,86 @@
 version: '3'
 services:
   Muzix_AuthService:
-    image: vaibhavcariappa/authenticationservice:v1
+    image: vaibhavcariappa/muzixauthenticationservice:v1
     restart: always
     network_mode: host
-    container_name: muzixauthservicecontainer
+    container_name: muzix_authenticationservicecontainer
     depends_on:
       - Muzix_mysqldb
+      - Muzix_EurekaService
     ports:
       - 8084:8084
+    healthcheck:
+      test: "exit 0"
 
   Muzix_UserTrackService:
-    image: vaibhavcariappa/usertrackservice:v1
+    image: vaibhavcariappa/muzixusertrackservice:v1
     restart: always
     network_mode: host
-    container_name: muzixusertrackservicecontainer
+    container_name: muzix_usertrackservicecontainer
     depends_on:
       - Muzix_mongodb
+      - Muzix_EurekaService
     ports:
       - 8085:8085
+    healthcheck:
+      test: "exit 0"
 
   Muzix_frontend:
-    image: vaibhavcariappa/muzixservicefrontendauthentication:v1
+    image: vaibhavcariappa/muzixangularservice:v1
     network_mode: host
-    container_name: muzix-angular
+    container_name: muzix_angularservicecontainer
     ports:
       - 8080:8080
+    healthcheck:
+      test: "exit 0"
+
+  Muzix_EurekaService:
+    image: vaibhavcariappa/muzixeurekaservice:v1
+    restart: always
+    network_mode: host
+    container_name: muzix_eurekaservicecontainer
+    ports:
+      - 9003:9003
+    healthcheck:
+      test: "exit 0"
+
+  Muzix_ZuulService:
+    image: vaibhavcariappa/muzixzuulservice:v1
+    restart: always
+    network_mode: host
+    container_name: muzix_zuulservicecontainer
+    ports:
+      - 8086:8086
+    healthcheck:
+      test: "exit 0"
+
+  Muzix_OrchestrationService:
+    image: vaibhavcariappa/muzixorchestrationservice:v1
+    restart: always
+    network_mode: host
+    container_name: muzix_orchestrationservicecontainer
+    depends_on:
+      - Muzix_EurekaService
+    ports:
+      - 8888:8888
+    healthcheck:
+      test: "exit 0"
+
 
   Muzix_mongodb:
     image: mongo:3.4-jessie
     network_mode: host
-    container_name: muzix-mongocontainer
+    container_name: muzix_mongocontainer
     ports:
       - 27017:27017
+    healthcheck:
+      test: "exit 0"
 
   Muzix_mysqldb:
     image: mysql:5.5
     network_mode: host
-    container_name: muzix-mysqlcontainer
+    container_name: muzix_mysqlcontainer
     ports:
       - 3306:3306
     environment:
@@ -45,4 +88,8 @@ services:
         MYSQL_USER: approot
         MYSQL_PASSWORD: root123
         MYSQL_ROOT_PASSWORD: root123
+    healthcheck:
+      test: "exit 0"
+
+
 
