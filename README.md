@@ -11,12 +11,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## List of services and ports
 
 Muzix_AuthService: 8084
+
 Muzix_UserTrackService: 8085
+
 Muzix_frontend: 8080
+
 Muzix_EurekaService: 9003
+
 Muzix_ZuulService: 8086
+
 Muzix_mongodb: 27017
+
 Muzix_mysqldb: 3306
+
 rabbitmq: 5672, 15672
 
 
