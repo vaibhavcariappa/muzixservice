@@ -23,7 +23,7 @@ export class WishListComponent implements OnInit {
     const message = "WishList is empty!";
     this.muzixService.getAllTracksFromWishList().subscribe(data=>{
       this.tracks = data;
-      if(data.length === 0) {
+      if(!this.tracks || data.length === 0) {
         this.snackBar.open(message,"",{duration: 2000});
       }
     });

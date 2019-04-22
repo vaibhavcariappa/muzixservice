@@ -93,7 +93,7 @@ describe('workspace-project App', () => {
 
   it('should be able to click on Menu item for Australia', () => {
     browser.element(by.css('.mat-button')).click();
-    browser.driver.sleep(1000);
+    browser.driver.sleep(5000);
     browser.element(by.css('.mat-menu-item-australia')).click();
     browser.driver.sleep(1000);
     expect(browser.getCurrentUrl()).toContain('/Australia');

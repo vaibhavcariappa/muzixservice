@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
       error => {
         console.log("error", error);
         if(error.status === 409) {
-          const errorMsg = error.error.message();
+          const errorMsg = error.error.message;
           this.snackBar.open(errorMsg,"",{duration: 2000});
           
         }
@@ -64,6 +64,10 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  onCancel() {
+    console.log("Cancel");
+    this.router.navigate(["/Login"]);
+  }
 
   ngOnInit() {
   }

@@ -1,5 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html, body { height: 100%; width: 100vw; overflow-x: hidden}
 .mat-form-field-appearance-outline .mat-form-field-outline-thick {
     color: #9c1148;
+}
+
+@media(max-width:575px) {
+    .mat-button {
+        font-size: 0.9em !important;
+    }
+
+    .example-card {
+        width: 70vw !important;
+    }
+
+    .image{
+        height: 40vw !important;
+        width: 44vw !important;
+    }
+
+    .mat-card {
+        height: 47vh !important;
+        width: 52vw !important;
+        margin-bottom: 15vh !important;
+    }
+
+    .myForm {
+        width: 41vw !important;
+    }
+
+    .mat-card-actions .mat-button, .mat-card-actions .mat-raised-button {
+        margin: 4px 8px !important;
+    }
+
+
+    .mat-form-field-wrapper {
+        padding-bottom: 0.5em !important;
+    }
+
+    .mat-menu-item {
+        font-size: 0.9em !important;
+    }
+
+    .mat-form-field.field {
+        padding-left: 10vh !important;
+    }
+
+    .mat-toolbar{
+        background-color: #9c1148;
+        height: 10vh !important;
+        display: flex;
+        text-align: right;
+    }
+    
+    .mat-toolbar-row{
+        height: 10vh !important;
+    }
+    
+    .logo{
+        height: 10vh !important;
+        margin-right: auto;    
+    }
+    
+    .logoImg{
+        height: 10vh !important;
+    }
+
+    .logoOrigin{
+        height: 30vh !important;
+        display: block;
+        margin: auto;
+        margin-top: 20vh !important;
+    }
+    .link{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        margin-top: 20vh !important;
+    }
+
+    .logoContainer{
+        min-height: 25vh !important;
+    }
+
 }

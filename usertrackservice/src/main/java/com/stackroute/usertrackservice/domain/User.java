@@ -11,6 +11,7 @@ public class User {
     @Id
     private String username;
     private String email;
+    private String password;
     private List<Track> trackList;
 
     public User() {
@@ -38,7 +39,15 @@ public class User {
         this.email = email;
     }
 
-    public List<Track> getTrackList() {
+    public String getPassword() {
+      return password;
+    }
+
+    public void setPassword(String password) {
+      this.password = password;
+    }
+
+  public List<Track> getTrackList() {
         return trackList;
     }
 

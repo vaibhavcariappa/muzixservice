@@ -54,18 +54,18 @@ public class UserControllerTest {
     }
 
 
-    @Test
-    public void testSaveUserSuccess() throws Exception{
-        Mockito.when(userService.saveUser(Mockito.any())).thenReturn(user);
-        mockMvc.perform(post("/api/v1/userservice/save")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonToString(user)))
-                .andExpect(status().isCreated())
-                .andDo(print());
-
-        Mockito.verify(userService, Mockito.times(1)).saveUser(Mockito.any());
-
-    }
+//    @Test
+//    public void testSaveUserSuccess() throws Exception{
+//        Mockito.when(userService.saveUser(Mockito.any())).thenReturn(user);
+//        mockMvc.perform(post("/api/v1/userservice/save")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(jsonToString(user)))
+//                .andExpect(status().isCreated())
+//                .andDo(print());
+//
+//        Mockito.verify(userService, Mockito.times(1)).saveUser(Mockito.any());
+//
+//    }
 
     @Test
     public void testUserLoginSuccess() throws Exception{

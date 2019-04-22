@@ -16,7 +16,9 @@ export class AuthenticationService {
 //    this.SpringRegisterEndPoint="http://localhost:8085/api/v1/usertrackservice/";
 //    this.SpringSaveEndPoint="http://localhost:8084/api/v1/userservice/";
 
-      this.SpringRegisterEndPoint="http://localhost:8086/orchestrationservice/api/v1/user";
+//    this.SpringRegisterEndPoint="http://localhost:8086/orchestrationservice/api/v1/user";
+
+      this.SpringRegisterEndPoint="http://localhost:8086/usertrackservice/api/v1/usertrackservice/register"
       this.SpringLoginEndPoint="http://localhost:8086/authenticationservice/api/v1/userservice/login";
 
   }

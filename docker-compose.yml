@@ -1,33 +1,35 @@
 version: '3'
 services:
   Muzix_AuthService:
-    image: vaibhavcariappa/muzixauthenticationservice:v1
+    image: vaibhavcariappa/muzixauthenticationservice:v2
     restart: always
     network_mode: host
     container_name: muzix_authenticationservicecontainer
     depends_on:
       - Muzix_mysqldb
       - Muzix_EurekaService
+      - rabbitmq
     ports:
       - 8084:8084
     healthcheck:
       test: "exit 0"
 
   Muzix_UserTrackService:
-    image: vaibhavcariappa/muzixusertrackservice:v1
+    image: vaibhavcariappa/muzixusertrackservice:v2
     restart: always
     network_mode: host
     container_name: muzix_usertrackservicecontainer
     depends_on:
       - Muzix_mongodb
       - Muzix_EurekaService
+      - rabbitmq
     ports:
       - 8085:8085
     healthcheck:
       test: "exit 0"
 
   Muzix_frontend:
-    image: vaibhavcariappa/muzixangularservice:v1
+    image: vaibhavcariappa/muzixangularservice:v2
     network_mode: host
     container_name: muzix_angularservicecontainer
     ports:
@@ -36,7 +38,7 @@ services:
       test: "exit 0"
 
   Muzix_EurekaService:
-    image: vaibhavcariappa/muzixeurekaservice:v1
+    image: vaibhavcariappa/muzixeurekaservice:v2
     restart: always
     network_mode: host
     container_name: muzix_eurekaservicecontainer
@@ -46,7 +48,7 @@ services:
       test: "exit 0"
 
   Muzix_ZuulService:
-    image: vaibhavcariappa/muzixzuulservice:v1
+    image: vaibhavcariappa/muzixzuulservice:v2
     restart: always
     network_mode: host
     container_name: muzix_zuulservicecontainer
@@ -54,19 +56,6 @@ services:
       - 8086:8086
     healthcheck:
       test: "exit 0"
-
-  Muzix_OrchestrationService:
-    image: vaibhavcariappa/muzixorchestrationservice:v1
-    restart: always
-    network_mode: host
-    container_name: muzix_orchestrationservicecontainer
-    depends_on:
-      - Muzix_EurekaService
-    ports:
-      - 8888:8888
-    healthcheck:
-      test: "exit 0"
-
 
   Muzix_mongodb:
     image: mongo:3.4-jessie
@@ -88,6 +77,15 @@ services:
         MYSQL_USER: approot
         MYSQL_PASSWORD: root123
         MYSQL_ROOT_PASSWORD: root123
+    healthcheck:
+      test: "exit 0"
+
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
     healthcheck:
       test: "exit 0"
 
