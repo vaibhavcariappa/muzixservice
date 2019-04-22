@@ -1,6 +1,24 @@
+
+![Logo of the project](./src/assets/image/logo.png)
+
 # MuzixApplication
 
+This project is a Music application which allows a user to access the top music tracks from many countries. It also allows the user to add tracks to Wishlist and add comments to the tracks in the Wishlist.
+The user has to first register and then login to get a personalized set of music tracks.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+
+## List of services and ports
+
+Muzix_AuthService: 8084
+Muzix_UserTrackService: 8085
+Muzix_frontend: 8080
+Muzix_EurekaService: 9003
+Muzix_ZuulService: 8086
+Muzix_mongodb: 27017
+Muzix_mysqldb: 3306
+rabbitmq: 5672, 15672
+
 
 ## Development server
 
